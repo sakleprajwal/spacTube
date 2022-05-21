@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@600&family=Lato:wght@300;400;700&family=Lobster&family=Playfair+Display&display=swap');
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+:root{
+    /* Font family */
+    --brand-font: 'Lobster', cursive;
+    --primary-font: 'Playfair Display', serif; 
+    --secondary-font: 'Asap', sans-serif; 
+    --ternary-font: 'Lato', sans-serif;  
+    /* 
+    font-family: 'Lobster', cursive;            BRAND
+    font-family: 'Playfair Display', serif;     Deal of the day
+    font-family: 'Asap', sans-serif;            BRAND/PRICE/COLOR
+    font-family: 'Lato', sans-serif;            Paragraph 300/400/700
+    */
+
+    /* Color */
+    --primary-color: #30292f;
+    --primary-shadow-color: rgb(70, 60, 68);
+    --primary-opaque-color: hsla(309, 8%, 17%, 0.5);
+    --ternary-color: #eaeaea;
+    --ternary-shadow-color: #c9c9c9;
+    --ternary-opaque-color: hsla(0, 0%, 92%, 0.5);
+}
+
+*{ 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+}  
