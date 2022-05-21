@@ -21,6 +21,9 @@
     --ternary-color: #eaeaea;
     --ternary-shadow-color: #c9c9c9;
     --ternary-opaque-color: hsla(0, 0%, 92%, 0.5);
+
+
+    --box-shadow: 0 1px 3px var(--primary-opaque-color), 0 1px 2px var(--ternary-opaque-color);
 }
 
 *{ 
