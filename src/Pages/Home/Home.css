@@ -1,7 +1,7 @@
 .categories-section{
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .home-title{
@@ -39,10 +39,9 @@
 
 
 @media screen and (max-width: 64em) {
-.categories-section{
-    flex-wrap: wrap;
-    justify-content: center;
-    width:100vw;
-}
-
+    .categories-section{
+        flex-wrap: wrap;
+        justify-content: center;
+        width:100vw;
+    }
 }

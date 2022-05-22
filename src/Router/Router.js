@@ -9,10 +9,11 @@ import WatchLater from '../Pages/Watch-later/Watch-later';
 
 const Router = () => {
     return (
-        <div>
+        <div className='main-section'>
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/explore" element={<RequireAuth> <Explore/> </RequireAuth>} />
+                {/* <Route path="/explore" element={<RequireAuth> <Explore/> </RequireAuth>} /> */}
+                <Route path="/explore" element={ <Explore/> } />
                 <Route path="/history" element={<History/>} />
                 <Route path="/watch-later" element={<WatchLater/>} />
                 <Route path="/login" element={<Login/>} />
