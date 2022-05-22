@@ -6,22 +6,48 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const categories = [
+  
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    imgUrl: "https://picsum.photos/id/175/400/250",
+    categoryName: "Trending",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    imgUrl: "https://picsum.photos/id/1079/400/250",
+    categoryName: "Music",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    imgUrl: "https://picsum.photos/id/1077/400/250",
+    categoryName: "Sport",
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  
+  {
+    _id: uuid(),
+    imgUrl: "https://picsum.photos/400/250",
+    categoryName: "Gaming",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  },
+  {
+    _id: uuid(),
+    imgUrl: "https://picsum.photos/id/230/400/250",
+    categoryName: "Nature",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  }, 
+  {
+    _id: uuid(),
+    imgUrl: "https://picsum.photos/id/1/400/250",
+    categoryName: "Web development",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
 ];

@@ -1,11 +1,17 @@
 import { React, useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../../Contexts/authentication-context/auth-context';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const initialFormData = { email: "", password: "" };
 
     const [loginForm, setLoginForm] = useState(initialFormData);
     const { email, password } = loginForm;
+    const { setIsLoggedIn } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || "/";
 
     const loginSubmitHandler = (e) => {
         e.preventDefault();
@@ -14,7 +20,9 @@ const Login = () => {
             const res = await axios.post("api/auth/login", { email, password });
             if (res.status === 200) {
               localStorage.setItem("token", res?.data?.encodedToken)
+              setIsLoggedIn(true);
             }
+            navigate(from, {replace:true})
           }
           catch (err) {
             console.log(err)

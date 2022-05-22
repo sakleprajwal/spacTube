@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { RequireAuth } from '../Contexts/RequireAuth/RequireAuth';
 import Explore from '../Pages/Explore/Explore';
 import History from '../Pages/History/History';
 import Home from '../Pages/Home/Home';
@@ -11,7 +12,7 @@ const Router = () => {
         <div>
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/explore" element={<Explore/>} />
+                <Route path="/explore" element={<RequireAuth> <Explore/> </RequireAuth>} />
                 <Route path="/history" element={<History/>} />
                 <Route path="/watch-later" element={<WatchLater/>} />
                 <Route path="/login" element={<Login/>} />
