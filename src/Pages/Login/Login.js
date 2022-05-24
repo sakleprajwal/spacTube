@@ -19,7 +19,7 @@ const Login = () => {
           try {
             const res = await axios.post("api/auth/login", { email, password });
             if (res.status === 200) {
-              localStorage.setItem("token", res?.data?.encodedToken)
+              localStorage.setItem("spacTube-token", res?.data?.encodedToken)
               setIsLoggedIn(true);
             }
             navigate(from, {replace:true})

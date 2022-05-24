@@ -49,7 +49,6 @@ const sidebarItems = [
 
 export default function ({ showSidebar, toggleSidebar }) {
 
-    console.log(showSidebar)
   return (
     <aside className={ showSidebar ? `${styles.sidebar} ${styles.sidebar__shown}` : `${styles.sidebar}`}>
       <div className={styles.sidebar__items__container}>

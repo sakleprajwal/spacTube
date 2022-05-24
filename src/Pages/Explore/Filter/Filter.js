@@ -1,4 +1,3 @@
-import { GrPowerReset } from "react-icons/gr";
 import { useVideos } from "../../../Contexts/video-context/video-context";
 import styles from "./Filter.module.css";
 
@@ -27,11 +26,11 @@ export default function () {
       text: "Gaming",
     },
     {
-      id: 5,
+      id: 6,
       text: "Nature",
     },
     {
-      id: 5,
+      id: 7,
       text: "Web development",
     },
   ];
@@ -40,16 +39,10 @@ export default function () {
     <div className={styles.filters__container}>
       <div className={styles.filters}>
         {filterBlocks.map((filter) => (
-          <>
-            <div
-              key={filter.id}
-              className={`${styles.filter} ${
-                category === filter.text && styles.filter__active
-              }`}
+            <div key={filter.id} className={`${styles.filter} ${category === filter.text && styles.filter__active}`}
               onClick={() => changeCategory(filter.text)}>
               {filter.text}
             </div>
-          </>
         ))}
       </div>
     </div>

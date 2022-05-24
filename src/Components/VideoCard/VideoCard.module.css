@@ -6,11 +6,12 @@
 
 .card__thumbnail {
     width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: contain;
+    aspect-ratio: 4/2;
+    object-fit: cover;
 }
 
 .card__description {
+    margin-top: 6px;
     padding: 0 0.75rem 0.75rem;
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -54,11 +55,5 @@
         display: grid;
         gap: 2rem;
         grid-template-columns: 100%;
-    }
-
-    .card__thumbnail {
-        width: 100%;
-        aspect-ratio: 4/3;
-        object-fit: cover;
     }
 }
