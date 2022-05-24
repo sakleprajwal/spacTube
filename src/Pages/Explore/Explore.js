@@ -2,6 +2,7 @@ import React from 'react';
 import VideoCard from '../../Components/VideoCard/VideoCard';
 import { useVideos } from '../../Contexts/video-context/video-context';
 import Filter from './Filter/Filter';
+import styles from '../../Components/VideoCard/VideoCard.module.css'
 
 const Explore = () => {
     const { videos } = useVideos();
