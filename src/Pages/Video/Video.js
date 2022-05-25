@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import {getVideoData, getRelatedVideos, isVideoLiked, isVideoInWatchLater} from "./Utils";
 import { useVideos } from "../../Contexts/video-context/video-context";
 import VideoCard from "../../Components/VideoCard/VideoCard";
+import Modal from "../../Components/Modal/Modal";
+import PlaylistModal from "./PlaylistModal/PlaylistModal";
 
 export default function () {
   const { videoId } = useParams();
@@ -16,6 +18,9 @@ export default function () {
   const relatedVideos = getRelatedVideos(video?.category, videos);
   const isLiked = isVideoLiked(video, likedVideos);
   const isInWatchlater = isVideoInWatchLater(video, watchLater);
+
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(false);
 
   const actions = [
     {
@@ -39,6 +44,7 @@ export default function () {
       icon: <MdOutlinePlaylistAdd />,
       title: "Add Video to a playlist",
       name: "Add to Playlist",
+      clickHandler: () => setShowModal(true),
     },
   ];
 
@@ -89,6 +95,9 @@ export default function () {
           </div>
         </div>
       </div>
+      <Modal showModal={showModal} header="Playlist" closeModal={closeModal}>
+        <PlaylistModal video={video} />
+      </Modal>
     </div>
   );
 }

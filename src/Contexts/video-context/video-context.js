@@ -151,6 +151,84 @@ const VideosProvider = ({ children }) => {
 		}
 	};
 
+
+	const addNewPlaylist = async (playlistForm) => {
+		if (isLoggedIn) {
+		  try {
+			const response = await axios.post("/api/user/playlists", { playlist: playlistForm },
+			  {headers: { authorization: localStorage.getItem("spacTube-token") }} );
+			videoDispatch({ type: "CREATE_PLAYLIST", payload: response?.data?.playlists, });
+			console.log("Playlist is created")
+		  } catch (e) {
+			console.error(e);
+		  }
+		} else {
+		  console.log("Please login")
+		}
+	  };
+	
+	  const addVideoToPlaylist = async (inputPlaylist, video) => {
+		const itALreadyExists = inputPlaylist?.videos.some( (iVideo) => iVideo._id === video._id);
+		if (itALreadyExists) {
+		  removeVideoFromPlaylist(inputPlaylist._id, video);
+		} else {
+		  if (isLoggedIn) {
+			try {
+			  const response = await axios.post(`/api/user/playlists/${inputPlaylist._id}`, { video },
+				{ headers: {authorization: localStorage.getItem("spacTube-token")} } );
+			  const { playlist } = response?.data;
+			  const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+				iPlaylist._id === playlist._id
+				  ? { ...iPlaylist, videos: playlist.videos }
+				  : { ...iPlaylist }
+			  );
+			  videoDispatch({ type: "ADD_VIDEO_TO_PLAYLIST", payload: updatedPlaylists, });
+			  console.log("Video added to playlist")
+			} catch (e) {
+			  console.error(e);
+			}
+		  } else {
+			console.log("Please login")
+		  }
+		}
+	  };
+	
+	  const removeVideoFromPlaylist = async (playlistId, video) => {
+		if (isLoggedIn) {
+		  try {
+			const response = await axios.delete(`/api/user/playlists/${playlistId}/${video._id}`,
+			  { headers: { authorization: localStorage.getItem("spacTube-token") } } );
+			const { playlist } = response?.data;
+			const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+			  iPlaylist._id === playlist._id
+				? { ...iPlaylist, videos: playlist.videos }
+				: { ...iPlaylist }
+			);
+			videoDispatch({ type: "REMOVE_VIDEO_FROM_PLAYLIST", payload: updatedPlaylists });
+			console.log("Video removed from playlist")
+		  } catch (e) {
+			console.error(e);
+		  }
+		} else {
+		  console.log("Please login")
+		}
+	  };
+	
+	  const deletePlaylist = async (playlist) => {
+		if (isLoggedIn) {
+		  try {
+			const response = await axios.delete(`/api/user/playlists/${playlist._id}`,
+			  { headers: { authorization: localStorage.getItem("spacTube-token") } } );
+			videoDispatch({ type: "DELETE_PLAYLIST", payload: response?.data?.playlists, });
+			console.log("Playlist is deleted")
+		  } catch (e) {
+			console.error(e);
+		  }
+		} else {
+		  console.log("Please login")
+		}
+	  };
+
     return (
         <VideosContext.Provider value={{
             videos: videosToShow,
@@ -166,6 +244,10 @@ const VideosProvider = ({ children }) => {
 			removeFromWatchlater,
 			addToHistory,
 			removeFromHistory,
+			addNewPlaylist,
+			addVideoToPlaylist,
+			removeVideoFromPlaylist,
+			deletePlaylist,
             videoDispatch,
           }}>
           {children}

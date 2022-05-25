@@ -1,0 +1,42 @@
+.form__container {
+  margin-top: auto;
+}
+
+.form {
+  display: flex;
+  margin-top: auto;
+  flex-direction: column;
+}
+
+input {
+  padding: 1rem;
+  margin-bottom: 8px;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  background-color: var(--ternary-color);
+  border: 1px solid var(--primary-shadow-color);
+  color: var(--primary-color);
+}
+
+input:focus {
+  background-color: var(--ternary-color);
+  outline: 1px solid var(--primary-color);
+}
+
+input:disabled {
+  background-color: var(--primary-opaque-color);
+  cursor: not-allowed;
+}
+
+button{
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--primary-shadow-color);
+    color: var(--ternary-color);
+    border: none;
+    cursor: pointer;
+}
+
+button:active{
+    background-color: var(--primary-opaque-color);
+}
