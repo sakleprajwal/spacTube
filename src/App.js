@@ -5,6 +5,7 @@ import Router from "./Router/Router";
 import Navbar from "./Components/Navbar/Navbar";
 import { AuthProvider } from "./Contexts/authentication-context/auth-context";
 import Sidebar from "./Components/Sidebar/Sidebar";
+import { VideosProvider } from "./Contexts/video-context/video-context";
 
 
 function App() {
@@ -15,10 +16,12 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Navbar toggleSidebar={toggleSidebar} />
-        <div className="flex-row">
-          <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
-          <Router />
-        </div>
+        <VideosProvider>
+          <div className="flex-row">
+            <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
+            <Router />
+          </div>
+        </VideosProvider>
       </AuthProvider>
     </BrowserRouter>
   );
