@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.page-title{
+    margin: 1rem;
+}
+
 a{
     text-decoration: none;
 }

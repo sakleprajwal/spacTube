@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-input {
+.playlist__input {
   padding: 1rem;
   margin-bottom: 8px;
   border-radius: 0.25rem;
@@ -18,17 +18,17 @@ input {
   color: var(--primary-color);
 }
 
-input:focus {
+.playlist__input:focus {
   background-color: var(--ternary-color);
   outline: 1px solid var(--primary-color);
 }
 
-input:disabled {
+.playlist__input:disabled {
   background-color: var(--primary-opaque-color);
   cursor: not-allowed;
 }
 
-button{
+.playlist__button{
     padding: 1rem;
     font-size: 1rem;
     background-color: var(--primary-shadow-color);
@@ -37,6 +37,6 @@ button{
     cursor: pointer;
 }
 
-button:active{
+.playlist__button:active{
     background-color: var(--primary-opaque-color);
 }

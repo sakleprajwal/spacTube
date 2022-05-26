@@ -151,6 +151,18 @@ const VideosProvider = ({ children }) => {
 		}
 	};
 
+	const clearHistory = async () => {
+		try {
+		  const response = await axios.delete(`/api/user/history/all`, { headers: { authorization: localStorage.getItem("spacTube-token") } });
+		  if (response.status === 200) {
+			videoDispatch({  type: "CLEAR_HISTORY", payload: response?.data?.history, });
+			console.log("History cleared")
+		  }
+		} catch (e) {
+		  console.log(e)
+		}
+	  };
+
 
 	const addNewPlaylist = async (playlistForm) => {
 		if (isLoggedIn) {
@@ -244,6 +256,7 @@ const VideosProvider = ({ children }) => {
 			removeFromWatchlater,
 			addToHistory,
 			removeFromHistory,
+			clearHistory,
 			addNewPlaylist,
 			addVideoToPlaylist,
 			removeVideoFromPlaylist,

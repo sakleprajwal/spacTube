@@ -27,7 +27,7 @@ const Home = () => {
 
     return (
         <div className='flex-column'>
-            <h2 className='home-title'>Categories</h2>
+            <h2 className='page-title'>Browse Categories</h2>
             <div className='categories-section flex-row'>
             {
                 categories.map((item) => (
