@@ -29,6 +29,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .card__thumbnail img {
   width: 100%;
   aspect-ratio: 4/2;
@@ -67,7 +68,18 @@
 }
 
 .card__description {
-  color: var(--gray11);
+  color: var(--primary-color);
+}
+
+.clear__history__btn{
+  padding: 0.5rem;
+  margin: auto 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: var(--ternary-color);
+  border: 2px solid var(--ternary-color);
+  height: max-content;
 }
 
 @media screen and (min-width: 43.75em) {

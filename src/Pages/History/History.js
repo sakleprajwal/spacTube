@@ -16,7 +16,7 @@ export default function () {
           <div>
             <div className={styles.heading}>
             <h2 className='page-title'>History</h2>
-              <button onClick={() => clearHistory()}>
+              <button className={styles.clear__history__btn} onClick={() => clearHistory()}>
                 Clear history
               </button>
             </div>
