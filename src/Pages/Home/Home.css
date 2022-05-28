@@ -1,11 +1,6 @@
 .categories-section{
     flex-wrap: wrap;
     justify-content: space-between;
-    /* width: 100%; */
-}
-
-.home-title{
-    margin: 1rem;
 }
 
 .category-card-container{
@@ -26,10 +21,6 @@
 
 .category-details{
     margin: 1rem;
-}
-
-.category-details h3{
-    
 }
 
 .category-details p{

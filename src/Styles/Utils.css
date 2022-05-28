@@ -7,8 +7,16 @@
     flex-direction: column;
 }
 
-a{
+.page-title{
+    margin: 1rem;
+}
+
+a, a:hover, a:focus, a:active {
     text-decoration: none;
+}
+
+.content-container{
+    margin: 1rem;
 }
 
 .main-section{

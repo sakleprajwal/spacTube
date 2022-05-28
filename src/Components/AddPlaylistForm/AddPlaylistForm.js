@@ -30,6 +30,7 @@ export default function () {
     <div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
+          className={styles.playlist__input}
           type="text"
           value={playlistForm.title}
           name="title"
@@ -38,6 +39,7 @@ export default function () {
           onChange={(event) => handleChange(event)}
         />
         <input
+        className={styles.playlist__input}
           type="text"
           value={playlistForm.description}
           name="description"
@@ -45,7 +47,7 @@ export default function () {
           onChange={(event) => handleChange(event)}
         />
         
-        <button>Create New Playlist</button>
+        <button className={styles.playlist__button}>Create New Playlist</button>
       </form>
     </div>
   );

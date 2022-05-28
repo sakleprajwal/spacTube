@@ -1,0 +1,22 @@
+.liked__container {
+    margin: 1rem;
+  }
+  
+  .liked__info {
+    padding: 2rem;
+    border-radius: 0.25rem;
+    background-color: var(--primary-color);
+    color: var(--ternary-color);
+  }
+  
+  .liked__info__text {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  .liked {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin: 2rem auto;
+  }

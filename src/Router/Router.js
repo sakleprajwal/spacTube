@@ -4,7 +4,10 @@ import { RequireAuth } from '../Contexts/RequireAuth/RequireAuth';
 import Explore from '../Pages/Explore/Explore';
 import History from '../Pages/History/History';
 import Home from '../Pages/Home/Home';
+import LikedVideos from '../Pages/LikedVideos/LikedVideos';
 import Login from '../Pages/Login/Login';
+import IndividualPlaylist from '../Pages/PlayList/IndividualPlaylist/IndividualPlaylist';
+import Playlist from '../Pages/PlayList/Playlist';
 import Video from '../Pages/Video/Video';
 import WatchLater from '../Pages/Watch-later/Watch-later';
 
@@ -15,6 +18,9 @@ const Router = () => {
                 <Route path="/" element={<Home/>} />
                 <Route path="/explore" element={<RequireAuth> <Explore/> </RequireAuth>} />
                 <Route path="/history" element={<History/>} />
+                <Route path="/liked-videos" element={<LikedVideos/>} />
+                <Route path="/playlist" element={<Playlist/>} />
+                <Route path="/playlist/:playlistId" element={<IndividualPlaylist />} />
                 <Route path="/watch-later" element={<WatchLater/>} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/video/:videoId" element={<Video />} />
