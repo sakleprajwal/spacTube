@@ -15,10 +15,13 @@ a, a:hover, a:focus, a:active {
     text-decoration: none;
 }
 
-.content-container{
+.main-section{
+    width: 100%;
     margin: 1rem;
 }
 
-.main-section{
-    width: 100%;
+@media screen and (max-width: 64em) {
+    .main-section{
+        margin: 0;
+    }
 }
