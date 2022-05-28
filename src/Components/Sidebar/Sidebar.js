@@ -27,12 +27,12 @@ const sidebarItems = [
     name: "History",
     path: "/history",
   },
-//   {
-//     id: 4,
-//     icon: <MdOutlinePlaylistPlay />,
-//     name: "Playlist",
-//     path: "/playlist",
-//   },
+  {
+    id: 4,
+    icon: <MdOutlinePlaylistPlay />,
+    name: "Playlist",
+    path: "/playlist",
+  },
   {
     id: 5,
     icon: <AiOutlineLike />,

@@ -1,4 +1,5 @@
 import { AiOutlineDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { useVideos } from "../../Contexts/video-context/video-context";
 import styles from "./History.module.css";
 
@@ -6,6 +7,7 @@ export default function ({ video }) {
   const { removeFromHistory } = useVideos();
 
   return (
+    <Link to={`/video/${video.videoId}`}>
     <div className={styles.card}>
       <div className={styles.card__thumbnail}>
         <img src={video?.thumbnail} alt={video?.title} />
@@ -23,5 +25,6 @@ export default function ({ video }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
