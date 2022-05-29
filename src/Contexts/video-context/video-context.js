@@ -2,6 +2,7 @@ import {createContext, useContext, useReducer, useState, useEffect} from "react"
 import axios from "axios";
 import { videosReducer } from "./videosReducer";
 import { useAuth } from "../authentication-context/auth-context";
+import Toaster from "../../Components/Toaster/Toaster";
   
 const VideosContext = createContext();
   
@@ -27,7 +28,7 @@ const VideosProvider = ({ children }) => {
             setVideos(response?.data?.videos);
           }
         } catch (e) {
-          console.error(e);
+			Toaster({message: "Something went wrong.", type: "error"});
         }
       })();
     }, []);
@@ -58,13 +59,12 @@ const VideosProvider = ({ children }) => {
 				{ video },
 				{ headers: {authorization: localStorage.getItem("spacTube-token")} }
 			  );
-			  console.log(response.data);
 			  if (response.status === 201) {
 				videoDispatch({ type: "ADD_TO_LIKED", payload: response?.data?.likes});
-				console.log("Video Liked")
+				Toaster({message: "Video is liked", type: "success"});
 			  }
 			} catch (e) {
-			  console.error(e);
+				Toaster({message: "Please login and try again.", type: "error"});
 			}
 		  }
 		}
@@ -77,10 +77,10 @@ const VideosProvider = ({ children }) => {
 		  });
 		  if (response.status === 200) {
 			videoDispatch({ type: "REMOVE_FROM_LIKED", payload: response?.data?.likes, });
-			console.log("Video removed from Liked")
+			Toaster({message: "Video is unliked", type: "success"});
 		  }
 		} catch (e) {
-		  console.log(e)
+			Toaster({message: "Please login and try again.", type: "error"});
 		}
 	};
 
@@ -94,13 +94,12 @@ const VideosProvider = ({ children }) => {
 				{ video },
 				{ headers: { authorization: localStorage.getItem("spacTube-token"), }, }
 			  );
-			  console.log(response.data);
 			  if (response.status === 201) {
 				videoDispatch({ type: "ADD_TO_WATCHLATER", payload: response?.data?.watchlater, });
-				console.log("Added to watch later")
+				Toaster({message: "Added to watch later.", type: "success"});
 			  }
 			} catch (e) {
-			  console.error(e);
+				Toaster({message: "Please login and try again.", type: "error"});
 			}
 		  }
 		}
@@ -113,10 +112,10 @@ const VideosProvider = ({ children }) => {
 		  });
 		  if (response.status === 200) {
 			videoDispatch({ type: "REMOVE_FROM_WATCHLATER", payload: response?.data?.watchlater, });
-			console.log("Removed from WatchLater")
+			Toaster({message: "Video is removed from watch later.", type: "success"});
 		  }
 		} catch (e) {
-		  console.log(e)
+			Toaster({message: "Please login and try again.", type: "error"});
 		}
 	};
 
@@ -127,12 +126,11 @@ const VideosProvider = ({ children }) => {
 			  { video },
 			  { headers: { authorization: localStorage.getItem("spacTube-token")} }
 			);
-			console.log(response);
 			if (response.status === 201) {
 			  videoDispatch({ type: "ADD_TO_HISTORY", payload: response?.data?.history, });
 			}
 		  } catch (e) {
-			console.error(e);
+			Toaster({message: "Please login and try again.", type: "error"});
 		  }
 		}
 	};
@@ -144,10 +142,10 @@ const VideosProvider = ({ children }) => {
 		  });
 		  if (response.status === 200) {
 			videoDispatch({  type: "REMOVE_FROM_HISTORY", payload: response?.data?.history, });
-			console.log("Removed from history")
+			Toaster({message: "Video is removed from history.", type: "success"});
 		  }
 		} catch (e) {
-		  console.log(e)
+			Toaster({message: "Please login and try again.", type: "error"});
 		}
 	};
 
@@ -156,26 +154,22 @@ const VideosProvider = ({ children }) => {
 		  const response = await axios.delete(`/api/user/history/all`, { headers: { authorization: localStorage.getItem("spacTube-token") } });
 		  if (response.status === 200) {
 			videoDispatch({  type: "CLEAR_HISTORY", payload: response?.data?.history, });
-			console.log("History cleared")
+			Toaster({message: "Your history is cleared.", type: "success"});
 		  }
 		} catch (e) {
-		  console.log(e)
+			Toaster({message: "Please login and try again.", type: "error"});
 		}
 	  };
 
 
 	const addNewPlaylist = async (playlistForm) => {
-		if (isLoggedIn) {
-		  try {
+		try {
 			const response = await axios.post("/api/user/playlists", { playlist: playlistForm },
 			  {headers: { authorization: localStorage.getItem("spacTube-token") }} );
 			videoDispatch({ type: "CREATE_PLAYLIST", payload: response?.data?.playlists, });
-			console.log("Playlist is created")
-		  } catch (e) {
-			console.error(e);
-		  }
-		} else {
-		  console.log("Please login")
+			Toaster({message: "Playlist is created.", type: "Success"});
+		} catch (e) {
+			Toaster({message: "Please login and try again.", type: "error"});
 		}
 	  };
 	
@@ -184,7 +178,6 @@ const VideosProvider = ({ children }) => {
 		if (itALreadyExists) {
 		  removeVideoFromPlaylist(inputPlaylist._id, video);
 		} else {
-		  if (isLoggedIn) {
 			try {
 			  const response = await axios.post(`/api/user/playlists/${inputPlaylist._id}`, { video },
 				{ headers: {authorization: localStorage.getItem("spacTube-token")} } );
@@ -195,18 +188,14 @@ const VideosProvider = ({ children }) => {
 				  : { ...iPlaylist }
 			  );
 			  videoDispatch({ type: "ADD_VIDEO_TO_PLAYLIST", payload: updatedPlaylists, });
-			  console.log("Video added to playlist")
+			  Toaster({message: "Video is added to playlist.", type: "success"});
 			} catch (e) {
-			  console.error(e);
+				Toaster({message: "Please login and try again.", type: "error"});
 			}
-		  } else {
-			console.log("Please login")
-		  }
 		}
 	  };
 	
 	  const removeVideoFromPlaylist = async (playlistId, video) => {
-		if (isLoggedIn) {
 		  try {
 			const response = await axios.delete(`/api/user/playlists/${playlistId}/${video._id}`,
 			  { headers: { authorization: localStorage.getItem("spacTube-token") } } );
@@ -217,28 +206,21 @@ const VideosProvider = ({ children }) => {
 				: { ...iPlaylist }
 			);
 			videoDispatch({ type: "REMOVE_VIDEO_FROM_PLAYLIST", payload: updatedPlaylists });
-			console.log("Video removed from playlist")
+			Toaster({message: "Video is removed from playlist.", type: "success"});
 		  } catch (e) {
-			console.error(e);
+			Toaster({message: "Please login and try again.", type: "error"});
 		  }
-		} else {
-		  console.log("Please login")
-		}
 	  };
 	
 	  const deletePlaylist = async (playlist) => {
-		if (isLoggedIn) {
 		  try {
 			const response = await axios.delete(`/api/user/playlists/${playlist._id}`,
 			  { headers: { authorization: localStorage.getItem("spacTube-token") } } );
 			videoDispatch({ type: "DELETE_PLAYLIST", payload: response?.data?.playlists, });
-			console.log("Playlist is deleted")
+			Toaster({message: "Playlist is deleted.", type: "success"});
 		  } catch (e) {
-			console.error(e);
+			Toaster({message: "Please login and try again.", type: "error"});
 		  }
-		} else {
-		  console.log("Please login")
-		}
 	  };
 
     return (

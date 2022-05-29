@@ -1,67 +1,77 @@
-import { React, useState } from 'react';
-import axios from 'axios';
-import { useAuth } from '../../Contexts/authentication-context/auth-context';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../Contexts/authentication-context/auth-context";
+import styles from "./AuthPages.module.css";
 
-const Login = () => {
-    const initialFormData = { email: "", password: "" };
+export default function () {
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+  const { handleLogin } = useAuth();
 
-    const [loginForm, setLoginForm] = useState(initialFormData);
-    const { email, password } = loginForm;
-    const { setIsLoggedIn } = useAuth();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from || "/";
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
 
-    const loginSubmitHandler = (e) => {
-        e.preventDefault();
-        (async () => {
-          try {
-            const res = await axios.post("api/auth/login", { email, password });
-            if (res.status === 200) {
-              localStorage.setItem("spacTube-token", res?.data?.encodedToken)
-              setIsLoggedIn(true);
-            }
-            navigate(from, {replace:true})
-          }
-          catch (err) {
-            console.log(err)
-          }
-        })()
-    }
+  const handleChange = (event) => {
+    setLoginForm({
+      ...loginForm,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-    function loginFormHandler(e) {
-        const { name, value } = e.target;
-    
-        setLoginForm(oldFormData => ({ ...oldFormData, [name]: value }))
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleLogin(loginForm, path);
+    setLoginForm({
+      email: "",
+      password: "",
+    });
+  };
 
-    return (
-        <div>
-            <form onSubmit={loginSubmitHandler}>
-                <h1>Login</h1>
-                <div >
-                    <div >
-                        <label htmlFor="email">Email address</label>
-                        <input type="text" name="email" placeholder="sakleprajwal@gmail.com" defaultValue={loginForm.email} onChange={loginFormHandler} />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input type="text" name="password" placeholder="prajwal" defaultValue={loginForm.password} onChange={loginFormHandler} />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <input type="checkbox" id="term&condition"/>
-                        <label htmlFor="term&condition">Remember me</label>
-                    </div>
-                    <a href="#">Forgot your password?</a>
-                </div>
-                <button type='submit'>Login</button>
-                <button>Create New Account</button>
-            </form>
-        </div>
+  const guestLogin = (event) => {
+    event.preventDefault();
+    handleLogin(
+      {
+        email: "guest@gmail.com",
+        password: "guest",
+      },
+      path
     );
-};
+    setLoginForm({
+      email: "",
+      password: "",
+    });
+  };
 
-export default Login;
+  return (
+    <div className="content-container">
+      <div className={styles.form__section}>
+        <h3 className="page-title">Login</h3>
+        <form onSubmit={handleSubmit} className={`"flex-column "${styles.form__container}`}>
+            <div className={`flex-column ${styles.input__fields}`}>
+            <label>Email</label>
+                <input type="email" name="email" value={loginForm.email} required={true}
+                  onChange={(event) => handleChange(event)}
+                />
+                <label>Password</label>
+                <input type="password" name="password" value={loginForm.password} required={true}
+                  onChange={(event) => handleChange(event)}
+                />
+            </div>
+          
+          
+            <button className={styles.login__btn}> Login </button>
+            <button onClick={guestLogin} className={styles.login__btn}>
+              Login as Guest
+            </button>
+        </form>
+        Don't have an account ?{" "}
+        <Link  to="/signup">
+          Create one now
+        </Link>
+      </div>
+    </div>
+  );
+}

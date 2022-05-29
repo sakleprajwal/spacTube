@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import { AuthProvider } from "./Contexts/authentication-context/auth-context";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import { VideosProvider } from "./Contexts/video-context/video-context";
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           </div>
         </VideosProvider>
       </AuthProvider>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

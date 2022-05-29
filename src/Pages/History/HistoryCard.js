@@ -7,16 +7,20 @@ export default function ({ video }) {
   const { removeFromHistory } = useVideos();
 
   return (
-    <Link to={`/video/${video.videoId}`}>
+    
     <div className={styles.card}>
       <div className={styles.card__thumbnail}>
-        <img src={video?.thumbnail} alt={video?.title} />
+        <Link to={`/video/${video.videoId}`}>
+          <img src={video?.thumbnail} alt={video?.title} />
+        </Link>
       </div>
       <div className={styles.card__description__container}>
-        <div>
-          <div className={styles.card__title}>{video?.title}</div>
-          <div className={styles.card__description}>{video?.description}</div>
-        </div>
+        <Link to={`/video/${video.videoId}`}>
+          <div>
+            <div className={styles.card__title}>{video?.title}</div>
+            <div className={styles.card__description}>{video?.description}</div>
+          </div>
+        </Link>
         <div
           className={styles.icon}
           onClick={() => removeFromHistory(video)}
@@ -25,6 +29,5 @@ export default function ({ video }) {
         </div>
       </div>
     </div>
-    </Link>
   );
 }

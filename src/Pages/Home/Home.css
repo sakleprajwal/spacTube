@@ -5,7 +5,7 @@
 
 .category-card-container{
     height: max-content;
-    width: 22rem;
+    width: 20rem;
     border-radius: 2rem;
     margin: 1rem;
     box-shadow: var(--box-shadow);

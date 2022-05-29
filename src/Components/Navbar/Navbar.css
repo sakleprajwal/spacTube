@@ -4,7 +4,7 @@
     position: sticky;
     top: 0%;
     background-color: var(--primary-color);
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
     color: var(--ternary-color);
@@ -13,6 +13,7 @@
 
   .navbar-brand{
     width: 100%;
+    margin: 0 3rem;
     max-width: 20rem;
     font-family: var(--brand-font);
     font-size: 2rem;
@@ -64,6 +65,7 @@
       border-radius: 0.25rem;
       color: var(--gray9);
       padding: 0.5rem 0.25rem;
+      margin: 0 2rem;
     }
   }
   

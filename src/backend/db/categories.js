@@ -10,7 +10,7 @@ export const categories = [
   {
     _id: uuid(),
     imgUrl: "https://picsum.photos/id/175/400/250",
-    categoryName: "Trending",
+    categoryName: "Learning",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
@@ -28,25 +28,10 @@ export const categories = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
-  
   {
     _id: uuid(),
-    imgUrl: "https://picsum.photos/400/250",
-    categoryName: "Gaming",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    _id: uuid(),
-    imgUrl: "https://picsum.photos/id/230/400/250",
-    categoryName: "Nature",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  }, 
-  {
-    _id: uuid(),
-    imgUrl: "https://picsum.photos/id/1/400/250",
-    categoryName: "Web development",
+    imgUrl: "https://picsum.photos/id/1077/400/250",
+    categoryName: "Standup",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod dolore magna aliqua. ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },

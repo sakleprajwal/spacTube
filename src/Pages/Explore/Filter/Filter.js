@@ -11,7 +11,7 @@ export default function () {
     },
     {
       id: 2,
-      text: "Trending",
+      text: "Learning",
     },
     {
       id: 3,
@@ -23,15 +23,7 @@ export default function () {
     },
     {
       id: 5,
-      text: "Gaming",
-    },
-    {
-      id: 6,
-      text: "Nature",
-    },
-    {
-      id: 7,
-      text: "Web development",
+      text: "Standup",
     },
   ];
 
